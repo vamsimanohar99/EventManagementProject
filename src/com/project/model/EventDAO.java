@@ -18,7 +18,17 @@ public class EventDAO {
     }
 
     public void deleteEvent(String eventid) {
-        
+    	Configuration conf=new Configuration();
+		conf=conf.configure();
+
+		SessionFactory factory =conf.buildSessionFactory();// build session factory, it builds connection pool
+		Session ses=factory.openSession();
+		Transaction tx=(Transaction) ses.beginTransaction();
+		Query q4=ses.createQuery("delete from Event where eventId=?");
+		q4.setString(0,eventid);
+		int count=q4.executeUpdate();
+		System.out.println("number of rows removed : "+count );
+		tx.commit(); 
     }
 
     public void updateEvent(Event event) {

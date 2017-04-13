@@ -37,7 +37,28 @@
 <tr>
 	
 	<td valign="top" align="center"><br/>
-		<form action='ServletController' name="frmeventmetadata"><table>
+		<form method="POST" action='ServletController' name="frmeventmetadata"><table>
+		<%-- <% String action = request.getParameter("action");
+                System.out.println(action);
+            %>
+            <% if (action.equalsIgnoreCase("edit")) {%>
+            User Name : <input type="text" name="uname" value="<c:out value="${user.uname}" />" readonly="readonly"/> (You Can't Change this)<br /> 
+            <%} else {%>
+            User Name : <input type="text" name="uname" /> <br />
+            <%}%>
+            Password : <input type="password" name="pass" value="<c:out value="${user.password}" />" /> <br /> 
+            Email : <input type="text" name="email"  value="<c:out value="${user.email}" />" /> <br /> 
+
+            <% if (action.equalsIgnoreCase("edit")) {%>
+                      Registration : <input type="text" name="dob"  value="<fmt:formatDate pattern="yyyy/MM/dd" value="${user.registeredon}" />" readonly="readonly"/>(You Can't Change this)  <br> />(yyyy/MM/dd)  <br /> 
+                     Registration : <input type="text" name="dob"  value="<c:out value="${user.registeredon}" />" readonly="readonly"/>(You Can't Change this)  <br />
+    
+ 
+            <%} else {%>
+            Registration : <input type="text" name="dob"   />(yyyy/MM/dd)  <br /> 
+<!--             value="<fmt:formatDate pattern="yyyy/MM/dd"  />"
+ -->            <%}%>
+            <input  type="submit" value="Submit" /> --%>
 		<tr>
 			<td colspan="2" align="center"><b>Event Metadata</b></td>
 		</tr>
@@ -47,7 +68,7 @@
 		<tr>
 		<td>Event Type:&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td>
-				<select>
+				<select name="eventType"> 
   			<option value="meeting">meeting</option>
  		 	<option value="conference">conference</option>
   			<option value="discussion">discussion</option>
@@ -55,17 +76,12 @@
 		</select>
 		</td>
 		</tr>
-		<!-- <tr>
+		<tr>
 			<td>EventID</td>
 			<td><input type="text" name="eventID" required autofocus/></td>
 			<br>
 		</tr>
-		<tr>
-			<td>VenueID</td>
-			<td><input type="text" name="venueID"/></td>
-			
-			
-		</tr> -->
+		
 		
 		<tr>
 			<td>Event Title</td>
@@ -101,17 +117,23 @@
 			
 			
 		</tr>
-		<tr>
+		<!-- <tr>
 		
              <td>Event Logo:</td> <td><input type="file" name="eventlogo"></td>
              
 
-		</tr>
+		</tr> -->
 		<tr>
 			<td>Event Track</td>
 			<td><input id="eventtrack" type="text" name="eventtrack"/></td>
 			
 		</td>
+		<tr>
+			<td>VenueID</td>
+			<td><input type="text" name="venueID"/></td>
+			
+			
+		</tr> 
 			<tr>
 			<td>Venue</td>
 			<td><input type="text" name="venuename"/></td>
